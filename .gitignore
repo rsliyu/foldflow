@@ -1,0 +1,8 @@
+build/
+app/build/
+.gradle/
+local.properties
+keystore/
+_ref/
+.gradle-home/
+release/
