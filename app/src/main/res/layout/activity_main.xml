@@ -1,479 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/pageScroll"
+<!-- 外屏 / 窄窗口：单栏 + 底部悬浮导航 -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/surface"
-    android:clipToPadding="false"
-    android:fillViewport="true"
-    android:paddingBottom="20dp">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!-- 顶部：标题 + Shizuku 状态 + 重启提示 -->
-        <LinearLayout
+        <include layout="@layout/view_header" />
+
+        <FrameLayout
+            android:id="@+id/panelHost"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/header_navy"
-            android:orientation="vertical"
-            android:paddingStart="22dp"
-            android:paddingTop="28dp"
-            android:paddingEnd="22dp"
-            android:paddingBottom="22dp">
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:letterSpacing="0.12"
-                android:text="ORIGINOS  ·  FOLD TOOL  ·  PLUS"
-                android:textColor="@color/accent_teal"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+            <include layout="@layout/panel_apps" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="9dp"
-                android:text="折叠屏分屏助手"
-                android:textColor="#ffffff"
-                android:textSize="29sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/subtitleText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="让系统原生多窗入口恢复可用 · 所有改动都可还原"
-                android:textColor="#b8c4d8"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/shizukuStatus"
+            <include
+                layout="@layout/panel_ratio"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:background="@drawable/status_background"
-                android:padding="14dp"
-                android:text="正在检查 Shizuku…"
-                android:textColor="#e5f4f3"
-                android:textSize="14sp" />
+                android:layout_height="match_parent"
+                android:visibility="gone" />
 
-            <Button
-                android:id="@+id/grantShizukuButton"
-                style="@style/HeroButton"
+            <include
+                layout="@layout/panel_split"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="9dp"
-                android:text="启动 / 授权 Shizuku" />
+                android:layout_height="match_parent"
+                android:visibility="gone" />
 
-            <LinearLayout
-                android:id="@+id/rebootBanner"
+            <include
+                layout="@layout/panel_window"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/warning_background"
-                android:orientation="vertical"
-                android:padding="14dp"
-                android:visibility="gone">
+                android:layout_height="match_parent"
+                android:visibility="gone" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="检测到手机重启过，系统可能已把分屏/小窗设置恢复成默认。"
-                    android:textColor="@color/warning_text"
-                    android:textSize="13sp" />
-
-                <Button
-                    android:id="@+id/bannerReapplyButton"
-                    style="@style/PrimaryButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="重新应用上次设置" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingStart="18dp"
-            android:paddingTop="8dp"
-            android:paddingEnd="18dp">
-
-            <!-- 01 选择应用 -->
-            <LinearLayout
-                style="@style/Panel"
+            <include
+                layout="@layout/panel_tools"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    style="@style/PanelTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="01  选择应用" />
-
-                <TextView
-                    style="@style/PanelHint"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="点一下勾选，可以多选。下面的比例、分屏操作都作用于已选应用。" />
-
-                <EditText
-                    android:id="@+id/appFilter"
-                    style="@style/AppFilter"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:hint="搜索应用名或包名"
-                    android:imeOptions="actionSearch"
-                    android:inputType="text"
-                    android:maxLines="1" />
-
-                <RadioGroup
-                    android:id="@+id/filterGroup"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/filterUser"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="@color/accent_teal"
-                        android:checked="true"
-                        android:text="用户应用"
-                        android:textColor="@color/text_primary"
-                        android:textSize="13sp" />
-
-                    <RadioButton
-                        android:id="@+id/filterAll"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="@color/accent_teal"
-                        android:text="全部"
-                        android:textColor="@color/text_primary"
-                        android:textSize="13sp" />
-
-                    <RadioButton
-                        android:id="@+id/filterModified"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="@color/accent_teal"
-                        android:text="已修改"
-                        android:textColor="@color/text_primary"
-                        android:textSize="13sp" />
-                </RadioGroup>
-
-                <ListView
-                    android:id="@+id/appList"
-                    android:layout_width="match_parent"
-                    android:layout_height="360dp"
-                    android:layout_marginTop="4dp"
-                    android:background="@drawable/field_background"
-                    android:divider="@color/border"
-                    android:dividerHeight="1dp"
-                    android:fadeScrollbars="false"
-                    android:padding="1dp" />
-
-                <TextView
-                    android:id="@+id/appCountText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="正在读取可启动应用…"
-                    android:textColor="@color/text_secondary"
-                    android:textSize="12sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/selectVisibleButton"
-                        style="@style/ChipButton"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="全选当前列表" />
-
-                    <Button
-                        android:id="@+id/clearSelectionButton"
-                        style="@style/ChipButton"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_weight="1"
-                        android:text="清空选择" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <!-- 02 内屏显示比例 -->
-            <LinearLayout
-                style="@style/Panel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    style="@style/PanelTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="02  内屏显示比例" />
-
-                <TextView
-                    style="@style/PanelHint"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="对已选应用生效，设置时应用会被重启。第一次修改前的比例会自动记下，随时可以恢复。20:9 等系统没有开放的比例会跳转到系统设置手动选择。" />
-
-                <Spinner
-                    android:id="@+id/innerRatioSpinner"
-                    style="@style/AppField"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp" />
-
-                <EditText
-                    android:id="@+id/manualRatioInput"
-                    style="@style/AppFilter"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:hint="或手动输入，例如 4:3、16:9、2.33"
-                    android:imeOptions="actionDone"
-                    android:inputType="text"
-                    android:maxLines="1" />
-
-                <CheckBox
-                    android:id="@+id/relaunchCheck"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:buttonTint="@color/accent_teal"
-                    android:text="只选一个应用时，设置后自动重新打开它"
-                    android:textColor="@color/text_primary"
-                    android:textSize="13sp" />
-
-                <Button
-                    android:id="@+id/applyInnerRatioButton"
-                    style="@style/PrimaryButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:text="应用到已选应用" />
-
-                <Button
-                    android:id="@+id/restoreRatioButton"
-                    style="@style/SecondaryButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="恢复已选应用的原比例" />
-            </LinearLayout>
-
-            <!-- 03 原生分屏 -->
-            <LinearLayout
-                style="@style/Panel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    style="@style/PanelTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="03  原生分屏" />
-
-                <TextView
-                    style="@style/PanelHint"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="加入 OriginOS 分屏与上下分屏兼容列表，不创建模拟窗口。修复后仍从最近任务进入分屏。" />
-
-                <Button
-                    android:id="@+id/repairSelectedButton"
-                    style="@style/PrimaryButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:text="修复已选应用" />
-
-                <Button
-                    android:id="@+id/repairAllButton"
-                    style="@style/SecondaryButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="一键修复全部应用" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/checkSplitButton"
-                        style="@style/ChipButton"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="检测已选状态" />
-
-                    <Button
-                        android:id="@+id/removeSplitButton"
-                        style="@style/ChipButton"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_weight="1"
-                        android:text="移除已选（实验）" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <!-- 04 全应用小窗 -->
-            <LinearLayout
-                style="@style/Panel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    style="@style/PanelTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="04  全应用小窗" />
-
-                <TextView
-                    style="@style/PanelHint"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="放宽系统对不可调整大小应用的小窗限制，并同步处理所有应用的分屏资格。第一次开启前会自动备份相关系统开关。" />
-
-                <Button
-                    android:id="@+id/enableSmallWindowsButton"
-                    style="@style/PrimaryButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:text="开启所有应用小窗" />
-
-                <Button
-                    android:id="@+id/restoreSmallWindowsButton"
-                    style="@style/SecondaryButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="还原系统小窗开关" />
-            </LinearLayout>
-
-            <!-- 05 重启与维护 -->
-            <LinearLayout
-                style="@style/Panel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    style="@style/PanelTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="05  重启与维护" />
-
-                <TextView
-                    style="@style/PanelHint"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="手机重启后，分屏和小窗设置可能被系统清掉（内屏比例不会）。重启后先启动 Shizuku，再打开本 App 或点下拉栏里的「多窗重新应用」快捷开关即可。" />
-
-                <CheckBox
-                    android:id="@+id/autoReapplyCheck"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:buttonTint="@color/accent_teal"
-                    android:text="检测到重启后，打开本 App 时自动重新应用"
-                    android:textColor="@color/text_primary"
-                    android:textSize="13sp" />
-
-                <Button
-                    android:id="@+id/reapplyButton"
-                    style="@style/SecondaryButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:text="立即重新应用上次设置" />
-
-                <Button
-                    android:id="@+id/diagnosticsButton"
-                    style="@style/SecondaryButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="生成诊断报告" />
-            </LinearLayout>
-
-            <!-- 执行记录 -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/log_background"
-                android:orientation="vertical"
-                android:padding="18dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="执行记录"
-                        android:textColor="#ffffff"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/copyLogButton"
-                        style="@style/SmallTextButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="复制" />
-
-                    <Button
-                        android:id="@+id/shareLogButton"
-                        style="@style/SmallTextButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="分享" />
-
-                    <Button
-                        android:id="@+id/clearLogButton"
-                        style="@style/SmallTextButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="清空" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/logText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:minHeight="72dp"
-                    android:text="日志会显示在这里"
-                    android:textColor="#c8d4e8"
-                    android:textIsSelectable="true"
-                    android:textSize="12sp" />
-            </LinearLayout>
-        </LinearLayout>
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+        </FrameLayout>
     </LinearLayout>
-</ScrollView>
+
+    <!-- 内容滚到导航栏下方时渐隐 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="118dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/nav_scrim"
+        android:importantForAccessibility="no" />
+
+    <include
+        android:id="@+id/taskHud"
+        layout="@layout/view_task_hud"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="@dimen/result_bar_bottom" />
+
+    <RadioGroup
+        android:id="@+id/tabBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/nav_bar_bg"
+        android:elevation="10dp"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <RadioButton
+            android:id="@+id/navApps"
+            style="@style/NavTab"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_nav_apps"
+            android:text="应用" />
+
+        <RadioButton
+            android:id="@+id/navRatio"
+            style="@style/NavTab"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_nav_ratio"
+            android:text="比例" />
+
+        <RadioButton
+            android:id="@+id/navSplit"
+            style="@style/NavTab"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_nav_split"
+            android:text="分屏" />
+
+        <RadioButton
+            android:id="@+id/navWindow"
+            style="@style/NavTab"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_nav_window"
+            android:text="小窗" />
+
+        <RadioButton
+            android:id="@+id/navTools"
+            style="@style/NavTab"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_nav_tools"
+            android:text="工具" />
+    </RadioGroup>
+</FrameLayout>

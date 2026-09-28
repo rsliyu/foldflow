@@ -1,22 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  展开的折叠屏，带透视：左屏一整块紫色，右屏上下分成青色和粉色两块（寓意分屏），
+  中间是发光的折痕。所有图形都在 66dp 安全圆内。
+-->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:height="108dp"
+    xmlns:aapt="http://schemas.android.com/aapt"
     android:width="108dp"
+    android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <path
-        android:fillColor="#56d9e5"
-        android:pathData="M18,18 L48,18 L48,90 L18,90 Z"/>
-    <path
-        android:fillColor="#9478ff"
-        android:pathData="M60,18 L90,18 L90,90 L60,90 Z"/>
-    <path
-        android:fillColor="#ffffff"
-        android:pathData="M51,18 L57,18 L57,90 L51,90 Z"/>
-    <path
-        android:fillColor="#ffffff"
-        android:pathData="M18,51 L90,51 L90,57 L18,57 Z"/>
-    <path
-        android:fillColor="#10152e"
-        android:pathData="M24,27 L42,27 L42,45 L24,45 Z M66,27 L84,27 L84,45 L66,45 Z M24,63 L42,63 L42,81 L24,81 Z M66,63 L84,63 L84,81 L66,81 Z"/>
+
+    <!-- 折痕背后的柔光 -->
+    <path android:pathData="M49,24h10v60h-10z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="59"
+                android:endY="54"
+                android:startX="49"
+                android:startY="54"
+                android:type="linear">
+                <item android:color="#0022D3EE" android:offset="0" />
+                <item android:color="#6622D3EE" android:offset="0.5" />
+                <item android:color="#0022D3EE" android:offset="1" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- 左屏 -->
+    <path android:pathData="M29,37.5 Q29,35.2 31.2,34.7 L50.2,30.3 Q52.4,29.8 52.4,32 L52.4,76 Q52.4,78.2 50.2,77.7 L31.2,73.3 Q29,72.8 29,70.5 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="52.4"
+                android:endY="78"
+                android:startX="29"
+                android:startY="30"
+                android:type="linear">
+                <item android:color="#FFD8CCFF" android:offset="0" />
+                <item android:color="#FF9D74FA" android:offset="0.45" />
+                <item android:color="#FF6D28D9" android:offset="1" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- 右屏上半 -->
+    <path android:pathData="M55.6,32 Q55.6,29.8 57.8,30.3 L76.8,34.7 Q79,35.2 79,37.5 L79,52.8 L55.6,52.8 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="79"
+                android:endY="53"
+                android:startX="55.6"
+                android:startY="30"
+                android:type="linear">
+                <item android:color="#FFCFFAFE" android:offset="0" />
+                <item android:color="#FF22D3EE" android:offset="0.55" />
+                <item android:color="#FF0891B2" android:offset="1" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- 右屏下半 -->
+    <path android:pathData="M55.6,55.2 L79,55.2 L79,70.5 Q79,72.8 76.8,73.3 L57.8,77.7 Q55.6,78.2 55.6,76 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="79"
+                android:endY="78"
+                android:startX="55.6"
+                android:startY="55"
+                android:type="linear">
+                <item android:color="#FFFBCFE8" android:offset="0" />
+                <item android:color="#FFF472B6" android:offset="0.5" />
+                <item android:color="#FFBE185D" android:offset="1" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- 玻璃反光 -->
+    <path android:pathData="M31,36 L50.4,31.6 L50.4,44 L31,50 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="40"
+                android:endY="50"
+                android:startX="40"
+                android:startY="32"
+                android:type="linear">
+                <item android:color="#40FFFFFF" android:offset="0" />
+                <item android:color="#00FFFFFF" android:offset="1" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- 发光折痕 -->
+    <path android:pathData="M53.3,26h1.4v56h-1.4z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="54"
+                android:endY="82"
+                android:startX="54"
+                android:startY="26"
+                android:type="linear">
+                <item android:color="#00FFFFFF" android:offset="0" />
+                <item android:color="#FFFFFFFF" android:offset="0.5" />
+                <item android:color="#00FFFFFF" android:offset="1" />
+            </gradient>
+        </aapt:attr>
+    </path>
 </vector>

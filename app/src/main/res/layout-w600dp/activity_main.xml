@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 内屏展开：左侧应用列表常驻，右侧分页操作区 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="46"
+        android:orientation="vertical">
+
+        <include layout="@layout/view_header" />
+
+        <include
+            layout="@layout/panel_apps"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <!-- 中间的发光分隔线，呼应折痕 -->
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/crease_line" />
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="54">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RadioGroup
+                android:id="@+id/tabBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/seg_track_bg"
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <!-- 双栏时没有独立的「应用」页，保留一个隐藏按钮让 id 与单栏一致 -->
+                <RadioButton
+                    android:id="@+id/navApps"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:visibility="gone" />
+
+                <RadioButton
+                    android:id="@+id/navRatio"
+                    style="@style/SegTab"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_nav_ratio"
+                    android:text="比例" />
+
+                <RadioButton
+                    android:id="@+id/navSplit"
+                    style="@style/SegTab"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_nav_split"
+                    android:text="分屏" />
+
+                <RadioButton
+                    android:id="@+id/navWindow"
+                    style="@style/SegTab"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_nav_window"
+                    android:text="小窗" />
+
+                <RadioButton
+                    android:id="@+id/navTools"
+                    style="@style/SegTab"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_nav_tools"
+                    android:text="工具" />
+            </RadioGroup>
+
+            <FrameLayout
+                android:id="@+id/panelHost"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="12dp"
+                android:layout_weight="1">
+
+                <include layout="@layout/panel_ratio" />
+
+                <include
+                    layout="@layout/panel_split"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone" />
+
+                <include
+                    layout="@layout/panel_window"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone" />
+
+                <include
+                    layout="@layout/panel_tools"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <include
+            android:id="@+id/taskHud"
+            layout="@layout/view_task_hud"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="14dp"
+            android:layout_marginBottom="@dimen/result_bar_bottom" />
+    </FrameLayout>
+</LinearLayout>

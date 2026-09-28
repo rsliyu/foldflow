@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="DiagramView">
+        <attr name="diagram" format="enum">
+            <enum name="fullOptimized" value="0" />
+            <enum name="full" value="1" />
+            <enum name="ratio4x3" value="2" />
+            <enum name="ratio16x9" value="3" />
+            <enum name="ratio21x9" value="4" />
+            <enum name="ratio20x9" value="5" />
+            <enum name="splitLeftRight" value="6" />
+            <enum name="splitTopBottom" value="7" />
+            <enum name="freeform" value="8" />
+        </attr>
+    </declare-styleable>
+</resources>

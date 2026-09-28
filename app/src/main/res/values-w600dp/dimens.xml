@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="panel_bottom_inset">28dp</dimen>
+    <dimen name="result_bar_bottom">20dp</dimen>
+</resources>

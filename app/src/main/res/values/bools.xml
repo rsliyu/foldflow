@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 内屏展开（宽度 ≥ 600dp）时使用左右双栏 -->
+    <bool name="two_pane">false</bool>
+</resources>

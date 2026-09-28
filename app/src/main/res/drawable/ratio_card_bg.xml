@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android" android:color="#2622D3EE">
+    <item android:id="@android:id/mask">
+        <shape>
+            <solid android:color="#FFFFFFFF" />
+            <corners android:radius="20dp" />
+        </shape>
+    </item>
+    <item>
+        <selector>
+            <item android:state_activated="true" android:drawable="@drawable/glass_glow_card" />
+            <item android:drawable="@drawable/glass_card" />
+        </selector>
+    </item>
+</ripple>

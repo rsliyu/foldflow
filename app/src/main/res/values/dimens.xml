@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 单栏时底部悬浮导航栏会盖住内容，面板底部留出空间 -->
+    <dimen name="panel_bottom_inset">104dp</dimen>
+    <dimen name="result_bar_bottom">92dp</dimen>
+</resources>

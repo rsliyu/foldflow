@@ -21,6 +21,7 @@
 
         <activity
             android:name=".MainActivity"
+            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout|density|keyboard|keyboardHidden|navigation|uiMode"
             android:exported="true"
             android:resizeableActivity="true"
             android:windowSoftInputMode="adjustResize|stateHidden">

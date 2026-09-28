@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/panelWindow"
+    style="@style/PanelScroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingTop="6dp"
+        android:paddingEnd="16dp">
+
+        <TextView
+            style="@style/Text.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="全应用小窗" />
+
+        <TextView
+            style="@style/Text.Body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="把所有应用加入系统小窗允许名单，并放宽系统对「不可调整大小」应用的限制，同时修复全部应用的分屏资格。" />
+
+        <LinearLayout
+            style="@style/Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="14dp">
+
+            <io.github.rsliyu.foldflow.DiagramView
+                android:layout_width="96dp"
+                android:layout_height="104dp"
+                android:importantForAccessibility="no"
+                app:diagram="freeform" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/windowStateTitle"
+                    style="@style/Text.CardTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="尚未开启" />
+
+                <TextView
+                    android:id="@+id/windowStateBody"
+                    style="@style/Text.Body"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="第一次开启前，会先备份要改动的系统开关。" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/enableSmallWindowsButton"
+            style="@style/Button.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="开启所有应用小窗" />
+
+        <Button
+            android:id="@+id/restoreSmallWindowsButton"
+            style="@style/Button.Ghost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="还原系统小窗开关" />
+
+        <TextView
+            style="@style/Text.Caption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:lineSpacingExtra="3dp"
+            android:text="会改动 8 个系统多窗开关，包括「强制允许调整应用大小」「忽略应用最小尺寸」，这也能解决部分应用锁定竖屏、不支持上下分屏的问题。小窗允许名单是整体写入的，还原时无法恢复成原来的名单。" />
+    </LinearLayout>
+</ScrollView>

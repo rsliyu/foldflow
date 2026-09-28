@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/panelApps"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/appFilter"
+        style="@style/Field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
+        android:drawableStart="@drawable/ic_search"
+        android:drawablePadding="10dp"
+        android:drawableTint="@color/text_muted"
+        android:hint="搜索应用名或包名"
+        android:imeOptions="actionSearch"
+        android:inputType="text" />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:clipToPadding="false"
+        android:paddingStart="16dp"
+        android:paddingEnd="8dp"
+        android:scrollbars="none">
+
+        <RadioGroup
+            android:id="@+id/filterGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/filterUser"
+                style="@style/Chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="用户应用" />
+
+            <RadioButton
+                android:id="@+id/filterAll"
+                style="@style/Chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="全部" />
+
+            <RadioButton
+                android:id="@+id/filterModified"
+                style="@style/Chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="已修改" />
+
+            <RadioButton
+                android:id="@+id/filterSelected"
+                style="@style/Chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="已选" />
+        </RadioGroup>
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="20dp"
+        android:paddingEnd="16dp">
+
+        <TextView
+            android:id="@+id/appCountText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="正在读取应用…"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/selectVisibleButton"
+            style="@style/Button.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:text="全选"
+            android:textColor="@color/cyan" />
+
+        <Button
+            android:id="@+id/clearSelectionButton"
+            style="@style/Button.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:text="清空"
+            android:textColor="@color/text_secondary" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/appList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:cacheColorHint="@android:color/transparent"
+        android:clipToPadding="false"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="8dp"
+        android:listSelector="@android:color/transparent"
+        android:overScrollMode="never"
+        android:paddingStart="14dp"
+        android:paddingTop="4dp"
+        android:paddingEnd="14dp"
+        android:paddingBottom="@dimen/panel_bottom_inset"
+        android:scrollbarSize="3dp"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbarThumbVertical="@drawable/scrollbar_thumb" />
+
+    <TextView
+        android:id="@+id/appEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:paddingBottom="@dimen/panel_bottom_inset"
+        android:text="没有符合条件的应用"
+        android:textColor="@color/text_muted"
+        android:textSize="13sp"
+        android:visibility="gone" />
+</LinearLayout>

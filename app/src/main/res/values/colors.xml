@@ -1,19 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="accent_teal">#19b7b0</color>
-    <color name="accent_teal_dark">#087c7a</color>
-    <color name="border">#dce3e9</color>
-    <color name="field_surface">#f8fafb</color>
-    <color name="header_navy">#111c35</color>
-    <color name="header_navy_light">#253452</color>
-    <color name="icon_background">#10152e</color>
-    <color name="log_surface">#17243d</color>
-    <color name="panel_surface">#ffffff</color>
-    <color name="surface">#f3f6f8</color>
-    <color name="text_primary">#142038</color>
-    <color name="text_secondary">#657084</color>
-    <color name="warning_surface">#fff4e0</color>
-    <color name="warning_border">#f2c779</color>
-    <color name="warning_text">#7a4b00</color>
-    <color name="selected_row">#e7f5f4</color>
+    <!-- 底色：深墨蓝，状态栏/导航栏与背景渐变首尾同色 -->
+    <color name="ink_950">#070A1A</color>
+    <color name="ink_900">#0A0F24</color>
+    <color name="ink_850">#111733</color>
+    <color name="ink_800">#161D3D</color>
+
+    <!-- 毛玻璃层 -->
+    <color name="glass">#12FFFFFF</color>
+    <color name="glass_strong">#1FFFFFFF</color>
+    <color name="glass_stroke">#26FFFFFF</color>
+    <color name="glass_stroke_soft">#14FFFFFF</color>
+
+    <color name="text_primary">#F2F4FF</color>
+    <color name="text_secondary">#A6AED3</color>
+    <color name="text_muted">#6F779E</color>
+    <color name="text_on_accent">#FFFFFF</color>
+
+    <!-- 霓虹强调色 -->
+    <color name="violet">#8B5CF6</color>
+    <color name="violet_soft">#C4B5FD</color>
+    <color name="cyan">#22D3EE</color>
+    <color name="cyan_soft">#A5F3FC</color>
+    <color name="pink">#F472B6</color>
+    <color name="lime">#4ADE80</color>
+    <color name="amber">#FBBF24</color>
+    <color name="red">#F87171</color>
+
+    <color name="console_text">#A5F3FC</color>
+    <color name="icon_background">#1B0F45</color>
 </resources>

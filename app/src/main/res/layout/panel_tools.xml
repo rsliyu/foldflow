@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/panelTools"
+    style="@style/PanelScroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingTop="6dp"
+        android:paddingEnd="16dp">
+
+        <TextView
+            style="@style/Text.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="工具" />
+
+        <LinearLayout
+            style="@style/Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp">
+
+            <TextView
+                style="@style/Text.CardTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="重启之后" />
+
+            <TextView
+                style="@style/Text.Body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="手机重启后，分屏和小窗设置可能被系统清掉（内屏比例不会）。先启动 Shizuku，再打开本 App 或点下拉栏的「多窗重新应用」快捷开关。" />
+
+            <Switch
+                android:id="@+id/autoReapplySwitch"
+                style="@style/Toggle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="检测到重启后，打开时自动重新应用" />
+
+            <Button
+                android:id="@+id/reapplyButton"
+                style="@style/Button.Ghost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="立即重新应用上次设置" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp">
+
+            <TextView
+                style="@style/Text.CardTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="诊断" />
+
+            <TextView
+                style="@style/Text.Body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="导出机型、系统版本、相关系统开关和 vivo 多窗接口信息。遇到问题时把报告发给开发者。" />
+
+            <Button
+                android:id="@+id/diagnosticsButton"
+                style="@style/Button.Ghost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="生成诊断报告" />
+        </LinearLayout>
+
+        <!-- 终端风格的执行记录 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/console_bg"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="6dp"
+            android:paddingBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:background="@drawable/status_dot"
+                    android:backgroundTint="@color/red" />
+
+                <View
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/status_dot"
+                    android:backgroundTint="@color/amber" />
+
+                <View
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/status_dot"
+                    android:backgroundTint="@color/lime" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:fontFamily="monospace"
+                    android:text="foldflow.log"
+                    android:textColor="@color/text_muted"
+                    android:textSize="12sp" />
+
+                <ImageButton
+                    android:id="@+id/copyLogButton"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="复制记录"
+                    android:src="@drawable/ic_copy"
+                    android:tint="@color/text_secondary" />
+
+                <ImageButton
+                    android:id="@+id/shareLogButton"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="分享记录"
+                    android:src="@drawable/ic_share"
+                    android:tint="@color/text_secondary" />
+
+                <ImageButton
+                    android:id="@+id/clearLogButton"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="清空记录"
+                    android:src="@drawable/ic_clear"
+                    android:tint="@color/text_secondary" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/logText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="monospace"
+                android:lineSpacingExtra="3dp"
+                android:minHeight="96dp"
+                android:textColor="@color/console_text"
+                android:textIsSelectable="true"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp">
+
+            <TextView
+                android:id="@+id/aboutTitle"
+                style="@style/Text.CardTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="关于" />
+
+            <TextView
+                style="@style/Text.Body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="开源项目，只适用于 vivo OriginOS 设备，需要 Shizuku。核心的系统调用方式参考了 xch20 的「折叠屏分屏助手」。" />
+
+            <Button
+                android:id="@+id/repoButton"
+                style="@style/Button.Ghost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="GitHub 项目主页" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

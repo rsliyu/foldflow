@@ -1,5 +1,7 @@
 plugins {
     id 'com.android.application'
+    // 界面截图测试：在电脑上渲染布局，不需要真机
+    id 'app.cash.paparazzi'
 }
 
 def keystoreProps = new Properties()
@@ -9,16 +11,16 @@ if (keystoreFile.exists()) {
 }
 
 android {
-    namespace 'com.xch20.foldsplit.plus'
+    namespace 'io.github.rsliyu.foldflow'
     compileSdk 35
 
     defaultConfig {
-        applicationId 'com.xch20.foldsplit.plus'
+        applicationId 'io.github.rsliyu.foldflow'
         minSdk 26
         // 34：避开 Android 15 对 targetSdk 35 强制全面屏的布局变化
         targetSdk 34
-        versionCode 1
-        versionName '2.0.0'
+        versionCode 3
+        versionName '3.0.0'
     }
 
     signingConfigs {
@@ -61,4 +63,5 @@ android {
 dependencies {
     implementation 'dev.rikka.shizuku:api:13.1.5'
     implementation 'dev.rikka.shizuku:provider:13.1.5'
+    testImplementation 'junit:junit:4.13.2'
 }
