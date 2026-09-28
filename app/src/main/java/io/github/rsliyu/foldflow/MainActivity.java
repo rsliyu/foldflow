@@ -35,7 +35,7 @@ public final class MainActivity extends Activity implements MainScreen.Listener 
     private static final int SHIZUKU_PERMISSION_REQUEST = 1001;
     private static final int LOG_LIMIT = 40000;
     private static final long RESULT_AUTO_HIDE_MS = 6000;
-    private static final String REPO_URL = "https://github.com/rsliyu/foldsplit-plus";
+    private static final String REPO_URL = "https://github.com/rsliyu/foldflow";
 
     private interface Task {
         FoldOps.Result run(FoldOps.Progress progress) throws Exception;

@@ -46,7 +46,7 @@
 
 ## 安装与使用
 
-1. 在 [Releases](https://github.com/rsliyu/foldsplit-plus/releases) 下载最新 APK 安装
+1. 在 [Releases](https://github.com/rsliyu/foldflow/releases) 下载最新 APK 安装
 2. 安装并启动 Shizuku
 3. 打开「折叠多窗」，点顶部的 Shizuku 状态完成授权
 4. 在「应用」页勾选应用，再到「比例 / 分屏 / 小窗」页执行操作
@@ -94,6 +94,10 @@ keyPassword=...
 | `UiState` / `MainScreen` | 界面状态，以及把状态渲染到单栏或双栏布局 |
 | `FoldHeroView` / `DiagramView` / `GlowProgressView` / `StatusDotView` | 自绘控件：折叠屏动画插画、比例与分屏示意图、流光进度条、状态灯 |
 | `ReapplyTileService` | 下拉栏快捷开关 |
+
+## 许可证
+
+[MIT](LICENSE)
 
 ## 致谢
 
